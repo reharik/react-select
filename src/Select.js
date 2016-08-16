@@ -698,7 +698,7 @@ const Select = React.createClass({
 		let renderLabel = this.props.valueRenderer || this.getOptionLabel;
 		let ValueComponent = this.props.valueComponent;
 		if (!valueArray.length) {
-			return !this.state.inputValue ? <div className="Select-placeholder">{this.props.placeholder}</div> : null;
+			return null;
 		}
 		let onClick = this.props.onValueClick ? this.handleValueClick : null;
 		if (this.props.multi) {
@@ -1022,6 +1022,9 @@ const Select = React.createClass({
 				 className={className}
 				 style={this.props.wrapperStyle}>
 				{this.renderHiddenField(valueArray)}
+				<span className="Select-multi-value-wrapper" id={this._instancePrefix + '-value'}>
+						{this.renderValue(valueArray, isOpen)}
+				</span>
 				<div ref="control"
 					className="Select-control"
 					style={this.props.style}
@@ -1031,10 +1034,8 @@ const Select = React.createClass({
 					onTouchStart={this.handleTouchStart}
 					onTouchMove={this.handleTouchMove}
 				>
-					<span className="Select-multi-value-wrapper" id={this._instancePrefix + '-value'}>
-						{this.renderValue(valueArray, isOpen)}
-						{this.renderInput(valueArray, focusedOptionIndex)}
-					</span>
+
+					{this.renderInput(valueArray, focusedOptionIndex)}
 					{removeMessage}
 					{this.renderLoading()}
 					{this.renderClear()}

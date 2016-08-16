@@ -48,6 +48,10 @@
 		.border-bottom-radius( @select-input-border-radius );
 	}
 
+	&:nth-child{
+		background-color: @select-option-bg-alt;
+	}
+
 	&.is-selected {
 		background-color: @select-option-selected-bg-fb;  /* Fallback color for IE 8 */
 		background-color: @select-option-selected-bg;
